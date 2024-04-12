@@ -1,4 +1,8 @@
-# Trabajo Práctico Número 4
+# Trabajo Práctico Número 3
+
+Seleccionar una biblioteca (o componente) del software a desarrollar en el TP final de la
+carrera de especialización / maestría y escribir un test unitario con ceedling que incluya por
+lo menos 5 test cases. El archivo de test debe tener por lo menos 65 líneas de extensión
 
 ## Uso del repositorio
 
@@ -11,32 +15,61 @@ Este repositorio utiliza las siguientes herramientas:
 
 Después de clonar el repositorio usted debería ejecutar el siguiente comando:
 
-```
+```bash
 pre-commit install
+git add .
+pre-commit
+git commit -m "lo que se desee comentar"
+git push origin main
+```
+
+
+Dentro del repositorio base se tiene:
+- inc
+- src
+- .clang-format
+- .gitignore
+- .pre-commit-config.yaml
+- doxyfile
+- LICENSE.txt
+- makefile
+- README.md
+
+Se debe instalar ruby, gocv y ceedling
+```bash
+sudo apt-get install ruby cogv
+sudo gem install ceedling
+sudo apt install gcovr
+```
+Se instala gcovr si al tipear gcovr --version, nos muestra como comando desconocido.
+
+Ahora iniciamos un nuevo proyecto ceedling, es importante no tener creado la carpeta test y tampo tener el archivo project.yml. Luego de ejecutar el siguiente comando, buscar una plantilla de project.yaml completa.
+``` bash
+ceedling new .
 ```
 
 Para ejecutar las pruebas unitarias se utiliza el siguiente comando:
 
-```
+```bash
 ceedling test:all
 ```
 
 Para generar el informe de cobertura de las pruebas se utiliza el siguiente comando:
 
-```
+```bash
 ceedling clobber gcov:all utils:gcov
 ```
 
 Para generar la documentación del proyecto se utiliza el siguiente comando:
 
-```
+```bash
 make doc
 
 ```
 
 Para compilar el proyecto se utiliza el siguiente comando:
 
-```
+```bash
 make all
 
 ```
