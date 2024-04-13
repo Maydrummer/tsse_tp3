@@ -28,7 +28,8 @@ SPDX-License-Identifier: MIT
 #include "API_commands.h"
 
 /* === Macros definitions ====================================================================== */
-
+#define MIN_NBYTE 0x31
+#define MAX_NBYTE 0x39
 /* === Private data type declarations ========================================================== */
 enum device_commands {
     DEVICE_CMD_DUMMY = 0x61,
@@ -64,4 +65,32 @@ uint8_t validar_comando(uint8_t byte_recibido) {
         return 0; // El byte recibido no coincide con ningún valor enumerado
     }
 }
+
+uint8_t check_crc_frame(uint8_t nbytes, uint8_t * buffer_frame) {
+    uint8_t crc_value;
+    for (uint8_t i = 0; i < (nbytes - 1); i++) {
+
+        crc_value ^= *buffer_frame;
+        buffer_frame++;
+    }
+
+    if (*(buffer_frame) == crc_value) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+uint8_t receive_nbytes_frame(uint8_t * buffer_nbytes) {
+    if ((*buffer_nbytes >= MIN_NBYTE) && (*buffer_nbytes <= MAX_NBYTE)) {
+        return *buffer_nbytes - '0';
+    } else {
+        return 0;
+    }
+}
+
+void inicializar_metadata(metadata_motores_t * metadata) {
+    *metadata = (metadata_motores_t){0};
+}
+
 /* === End of documentation ==================================================================== */
