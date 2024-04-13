@@ -73,3 +73,11 @@ Para compilar el proyecto se utiliza el siguiente comando:
 make all
 
 ```
+
+## Componente a testear
+
+Se trata de una biblioteca que verifica si los comandos recibidos por I2C son permitidos por el slave.
+
+### Test a realizar
+- [ ] La funcion *validar_comando* retorna un 1 si el comando que se le pasa pertenece a la lista de comandos predefinidos.
+- [ ] La funcion *validar_comando* retorna un 0 si el comando que se le pasa no pertenece a la lista de comandos predefinidos.
