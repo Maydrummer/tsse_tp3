@@ -76,8 +76,13 @@ make all
 
 ## Componente a testear
 
-Se trata de una biblioteca que verifica si los comandos recibidos por I2C son permitidos por el slave.
+Se trata de una biblioteca que verifica si los comandos recibidos por I2C son permitidos por el slave. El slave sera el STM32G070CBT6 y el master una ORANGEPI5. Este pequeno componente abarca una parte de un proyecto donde se requiere enviar comandos I2C al micro para que este realice acciones.
 
 ### Test a realizar
-- [ ] La funcion *validar_comando* retorna un 1 si el comando que se le pasa pertenece a la lista de comandos predefinidos.
-- [ ] La funcion *validar_comando* retorna un 0 si el comando que se le pasa no pertenece a la lista de comandos predefinidos.
+- [x] La funcion *validar_comando* retorna un 1 si el comando que se le pasa pertenece a la lista de comandos predefinidos.
+- [x] La funcion *validar_comando* retorna un 0 si el comando que se le pasa no pertenece a la lista de comandos predefinidos.
+- [x] Inicializar un metadata con valores randonds y probar que una funcion lo inicialice con todos sus campos en cero.
+- [x] Pasar un buffer de 4 bytes con un 5to byte que contiene el XOR De todos los bytes incorrectos y verificar si la funcion returno un cero para este caso
+- [x] Pasar un buffer de 4 bytes con el XOR correcto y verificar si la funcion retorna un 1 en este caso.
+- [x] Verificar si la funcion ascii_to_int convierte correctamente el ascii a int.
+- [x] Pasar un valor fuera de rango de la funcion ascii_to_int para ver si retorna un cero.
